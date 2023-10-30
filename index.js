@@ -5,19 +5,61 @@
         let preguntas;
         let preguntaActual = 0;
         let contador = 0;
+        // let body = document.querySelector('body'); fuente: coding
+        let div = document.createElement('div');
+        div.setAttribute("id", "juego-container");
+        document.body.appendChild(div);//Nos hemos dado cuenta de que no funcionaba sin hacer primero un 'appenchild'. Fuente:Mariano, sesion1
         let container = document.getElementById("juego-container");
 
         fetch('/quiz.json')
             .then(response => response.json())
             .then(data => {
                 preguntas = data;
-                mostrarPregunta();
+                mostrarPregunta();//Si no poníamos la función, no había forma de acceder al contenido de 'preguntas'. por qué?? por ser asíncrono?
             })
             .catch(error => {
                 console.error(error);
             });
 
+
+            // function mostrarPregunta() {
+            //     let pregunta = preguntas[preguntaActual];
+            //     let container2 = document.getElementById("juego-container");
+            //     let form = document.createElement('form', ['id="formulario"']);
+            //     let selectForm = getElementById('formulario');
+            //     let fieldset = document.createElement('fieldset', ['id = "fieldset"']);
+            //     let selectFieldset = getElementById('fieldset');
+            //     let legend = document.createElement('legend');
+            //     let h2 = document.createElement('h2');
+            //     let input = document.createElement('input', ['name="options"']);
+            //     let label = document.createElement('label');
+            //     let boton = document.createElement('button',  ['onclick = "verificarRespuestaYAvanzar()"']);
+            //     let divMarcador = document.createElement('div', ['id="marcador"'])
+            //     fieldset.append(legend);
+            //     fieldset.append(h2);
+            //     fieldset.append(input);
+            //     fieldset.append(label);
+            //     fieldset.append(input);
+            //     fieldset.append(label);
+            //     fieldset.append(input);
+            //     fieldset.append(label);
+            //     fieldset.append(input);
+            //     fieldset.append(label);
+            //     fieldset.append(boton);
+            //     fieldset.append(divMarcador);
+
+            //     // usando innerHTML, ref MDN
+            //     container.innerHTML = estructuraHTML;
+                
+            // }
+
+
+
+
+
         // !No sabíamos como almacenar el valor del label sin añadirle un "value" a los inputs
+        // !En el apartado formularios del DOM, coding rooms aparece la forma que estamos usando
+        // !AL usar un <form> nos da un warning en la consola, deberíamos haberlo hecho sin un <form>?
         function mostrarPregunta() {
             let pregunta = preguntas[preguntaActual];
             let estructuraHTML = `
@@ -43,37 +85,14 @@
                     </fieldset>
                 </form>
             `;
-            // usando innerHTML, ref MDN
+            // usando innerHTML, Fuente: MDN
             container.innerHTML = estructuraHTML;
             
         }
 
-           
-
-        /* function validarRespuesta(){
-            const respuestaSeleccionada = document.getElementById("1")
-            const respuestaCorrecta = pregunta.correct;
-
-            if( respuestaSeleccionada === respuestaCorrecta){
-                alert("Correcto!");
-            }
-
-            else {
-                alert("Te has equivocado!");
-            }
-        }; */
-
-        
-
-        /* function verificarRespuestaYAvanzar() {
-
-            preguntaActual = (preguntaActual + 1) % preguntas.length;
-            mostrarPregunta();
-        } */
-
         function verificarRespuestaYAvanzar() {
             let seleccion = document.querySelectorAll('input[type="radio"]');
-            let respuestaSeleccionada;
+            let respuestaSeleccionada = null ;
             for (let i = 0; i < seleccion.length; i++) {
                 if (seleccion[i].checked) {
                     respuestaSeleccionada = seleccion[i].value;
@@ -81,11 +100,18 @@
             }
         
 
-            
+            /* if (respuestaSeleccionada === null || respuestaSeleccionada === ""){
+                alert('Debes seleccionar una respuesta');
+                return;
+
+            } */
+
             if (respuestaSeleccionada === preguntas[preguntaActual].correct) {
                 // alert("!Enhorabuena, tu respuesta es correcta!")
                 contador ++;
-            }  else {
+            }
+            else {
+                
                 // alert("Respuesta incorrecta. La respuesta correcta es: " + preguntas[preguntaActual].correct);
             }
 
@@ -93,53 +119,3 @@
             mostrarPregunta();
         }
 
-
-       /*  function verificarRespuestaYAvanzar() {
-
-            let respuestaSeleccionada = document.getElementById("uno")
-            let respuestaCorrecta = pregunta.correct;
-            console.log(respuestaCorrecta);
-
-            if( respuestaSeleccionada === respuestaCorrecta){
-                preguntaActual = (preguntaActual + 1) % preguntas.length;
-                mostrarPregunta();
-            }
-
-            else {
-                alert("Te has equivocado!");
-            }
-            
-           
-        } */
-
-
-
-
-
-
-/* <label for="2">
-
-<li><input type="radio" id="2" name="options"/>${respuesta}</li>
-
-</label>
-
-<label for="3">
-
-<li><input type="radio" id="3" name="options"/>${respuesta}</li>
-
-</label>
-
-<label for="4">
-
-<li><input type="radio" id="4" name="options"/>${respuesta}</li>
-
-</label> */
-
-
-// Función siguiente pregunta
-/* 
- function verificarRespuestaYAvanzar() {
-
-    preguntaActual = (preguntaActual + 1) % preguntas.length;
-    mostrarPregunta();
-} */
