@@ -1,4 +1,58 @@
-#marcador{
-    border : 1px solid black;
-    width : 200px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#juego-container {
+  min-width: fit-content;
+
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-areas:
+    "h2 answers"
+    "button button"
+    "marcador marcador";
+  grid-template-rows: 1fr 1fr;
+
+  border: 3px solid black;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+h2 {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: bisque;
+
+  grid-area: h2;
+}
+#answers {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  grid-area: answers;
+}
+label {
+  margin: 5px 5px;
+}
+input {
+  margin-right: 15px;
+}
+button {
+  grid-area: button;
+}
+#marcador {
+  grid-area: marcador;
 }
