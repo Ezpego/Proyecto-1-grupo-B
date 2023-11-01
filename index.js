@@ -57,11 +57,7 @@ function mostrarPregunta() {
   let pregunta = preguntas[preguntaActual];
   let estructuraHTML = `
                 <form>
-                    <fieldset>
-                    <legend> Juego de Preguntas y Respuestas </legend>
-
-                    
-                        <h2>${pregunta.question}</h2>
+                    <h2>${pregunta.question}</h2>
                     
                 
                     <div id="answers">
@@ -85,12 +81,10 @@ function mostrarPregunta() {
                         ${pregunta.answers[3]}
                     </label>
                     </div>
-                     <button onclick="verificarRespuestaYAvanzar()">Comprobar respuesta</button>
-                    <div id="marcador"> Score : ${contador} / ${preguntaActual}</div>
-
-                    </fieldset>
-                   
+                     <button onclick="verificarRespuestaYAvanzar()">Siguiente pregunta</button>
+                    <div id="marcador">${preguntaActual +1} / ${preguntas.length}</div>
                 </form>
+                <div id="int"></div>
             `;
   // usando innerHTML, Fuente: MDN
   container.innerHTML = estructuraHTML;
