@@ -6,7 +6,7 @@ let contador = 0;
 let container = document.getElementById("juego-container");
 
 
-fetch("/quiz.json") 
+fetch("./quiz.json") 
   .then((response) => response.json())
   .then((data) => {
     preguntas = data;
