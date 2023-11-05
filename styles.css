@@ -15,7 +15,7 @@ height: 100vh;
 
 #juego-container {
   margin-left: 25px;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 form {
@@ -175,7 +175,9 @@ button {
     height: 100vh;
     }
   
-  
+    #juego-container {
+      margin-top: 100px;
+    }
   
   form {
     background-color: transparent;
@@ -190,3 +192,4 @@ button {
   justify-content: center;
   }
 }
+
