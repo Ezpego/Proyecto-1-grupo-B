@@ -1,7 +1,7 @@
 "use strict";
 
 let preguntas;
-let preguntaActual = 48;
+let preguntaActual = 0;
 let contador = 0;
 let container = document.getElementById("juego-container");
 
@@ -63,7 +63,7 @@ function mensajeFinal() {
   respuestas.textContent = " ";
 
   let selectBoton = document.querySelector('#boton');
-  selectBoton.removeEventListener('click', verificarRespuestaYAvanzar)//Por qué hay que eliminar ?
+  selectBoton.removeEventListener('click', verificarRespuestaYAvanzar)
   selectBoton.addEventListener('click', reiniciar);
 }
 
