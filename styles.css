@@ -5,7 +5,6 @@
 }
 body{
 background-color:#00B4B1 ;
-/* background-color: rgba(7, 183, 183, 0.867); */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -165,12 +164,10 @@ button {
   
   body{
     background-color:#00B4B1 ;
-    /* background-color: rgba(7, 183, 183, 0.867); */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
     }
   
   
@@ -185,8 +182,6 @@ button {
     "h2 h2 answers"
     "button marcador marcador ";
   grid-template-columns: 1fr 1fr 1fr;
-  /* grid-template-rows: 1fr 1fr; */
-  
   justify-content: center;
   }
 }
